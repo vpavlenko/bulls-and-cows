@@ -26,3 +26,7 @@ Reading
 ===
 
 http://www.machinelearning.ru/wiki/images/7/78/BayesML-2010-Yangel-Akinator.pdf
+
+Листочки для понимания
+=== 
+
