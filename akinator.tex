@@ -1,0 +1,77 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\makeatletter
+
+\textheight=251mm %+20mm
+\textwidth=163.4mm
+\oddsidemargin=-2.1mm
+\evensidemargin=-2.1mm
+\topmargin=-16.5mm %-20mm
+
+\newcommand*{\ralph}[1]{\expandafter\rralph\csname c@#1\endcsname}
+\newcommand*{\rralph}[1]%
+{\ifcase #1\or а\or б\or в\or г\or д\or е\or ж\or з\or и\or
+к\or л\or м\or н\or о\or п\or р\or с\or т\or у\or
+ф\or х\or ц\or ч\or ш\or щ\or э\or ю\or
+я\fi}
+
+\newcounter{problem}
+\setcounter{problem}{4}
+\newcounter{item}
+\newcommand*{\z}{\par\medskip\addtocounter{problem}{1}\setcounter{item}{0}
+\textbf{Задача \arabic{problem}.\ }}
+\newcommand*{\zh}{\par\medskip\addtocounter{problem}{1}\setcounter{item}{0}
+\textbf{Задача \arabic{problem}*.\ }}
+\newcommand*{\zH}{\par\medskip\addtocounter{problem}{1}\setcounter{item}{0}
+\textbf{Задача \arabic{problem}**.\ }}
+\newcommand*{\zn}[1]{\par\medskip\addtocounter{problem}{1}\setcounter{item}{0}
+\textbf{Задача \arabic{problem} (#1).}}
+\newcommand*{\znh}[1]{\par\medskip\addtocounter{problem}{1}\setcounter{item}{0}
+\textbf{Задача \arabic{problem}* (#1).}}
+\newcommand*{\znH}[1]{\par\medskip\addtocounter{problem}{1}\setcounter{item}{0}
+\textbf{Задача \arabic{problem}** (#1).}}
+
+\newcommand*{\zite}{\par\medskip\addtocounter{problem}{1}\setcounter{item}{1}
+\textbf{Задача \arabic{problem}.} (\ralph{item})\ }
+\newcommand*{\ite}{\par\addtocounter{item}{1}(\ralph{item})\ }
+\newcommand*{\iteh}{\par\addtocounter{item}{1}(\ralph{item})*\ }
+\newcommand*{\iteH}{\par\addtocounter{item}{1}(\ralph{item})**\ }
+
+\newcommand*{\iten}[1]{\par\addtocounter{item}{1}(\ralph{item}) \textbf{(#1)}}
+\newcommand*{\itenh}[1]{\par\addtocounter{item}{1}(\ralph{item})* \textbf{(#1)}}
+\newcommand*{\itenH}[1]{\par\addtocounter{item}{1}(\ralph{item})** \textbf{(#1)}}
+\newcommand{\myP}[0]{\mathsf{P}}
+
+\begin{document}
+\pagestyle{empty}
+
+%\renewcommand{\@oddhead}%
+%{\vbox{
+{\footnotesize\begin{tabbing}V зимняя школа <<Комбинаторная математика и теория алгоритмов>>\`10--17 февраля 2013 г.\\
+Виталий Павленко, ФИВТ МФТИ\`\texttt{vk.com/vitalypavlenko}\end{tabbing}}
+
+%}}
+
+\begin{center}
+\vskip 24pt
+{\bf\LargeТеорема Байеса -- 2: Акинатор}
+\end{center}
+
+Для получения зачёта нужно решить предыдущий листочек. Кроме того, нужно либо решить этот листочек, либо написать программу, которая выигрывает в <<Быки и коровы>>, либо совершить оба этих поступка.
+
+\z Пусть имеется источник, который выдаёт символы $a$, $b$ и $c$ с вероятностями $\myP(a) = 0.6$, $\myP(b) = 0.3$ и $\myP(c) = 0.1$.
+\ite Какова энтропия этого источника? Что говорит нам знание энтропии о потенциальной возможности сжатия длинных сообщений источника?
+\ite Предложите какой-нибудь простой префиксный код для этого источника, который не использует группировку символов в пары. Пусть кодируется исходное сообщение длины $N$. Какова ожидаемая длина закодированного сообщения?
+\ite Попробуйте предложить какой-нибудь более сложный префиксный код, который использует группировку символов в пары. Удалось ли вам уменьшить ожидаемую длину закодированного сообщения?
+
+\z Пусть мы играем в <<Быки и коровы>>. Покажите, как можно вычислить условную энтропию 
+$$ H(\text{число} \mid (Q_1 = 1234, A_1 = \text{1 б., 2 к.}), (Q_2 = 5678, A_2 = \text{1 б., 0 к.}), (Q_3 = 3428, A_3 = \text{?})). $$
+
+\z Пусть мы верим в закон Хика и ставим эксперимент, в котором человек повторяет за компьютером числа на скорость. Сначала компьютер показывал человеку длинную серию, в которой всего два различных числа, и среднее время реакции человека составило 0.2 секунды. Потом компьютер показывал человеку серию, в которой четыре различных числа, и среднее время реакции человека составило 0.35 секунды. Компьютер готовится показывать человеку серию из шести различных чисел. Какое среднее время реакции следует ожидать?
+
+\z Рассмотрим два источника, каждый из которых порождает два различных символа. Источник $p$~--- это честная монетка: $p_1 = 0.5$, $p_2 = 0.5$. Источник $q$~--- это нечестная монетка: $q_1 = 0.7$, $q_2 = 0.3$. Что неэффективнее: кодировать честный источник кодом, оптимальным для нечестного источника, или наоборот?
+
+\end{document}
